@@ -3,14 +3,13 @@ import time
 import json
 from random import *
 
-brokerIP = "52.187.144.179"
+brokerIP = "localhost"
 
 #Callback function
 def on_connect(client, usrdata, flags, rc):
-    if rc==0:
-        print("Connect Successfull!")
-        # Subscribe topic "home/light"
-        client.Subscribe("home/light")
+    print("Connect Successfull! Code: " + str(rc))
+    # Subscribe topic "home/light"
+    client.subscribe("home/light/#")
 
 def on_message(client, usrdata, msg):
     print (str(msg.payload))
